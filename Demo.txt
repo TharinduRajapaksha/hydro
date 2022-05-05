@@ -1,0 +1,16 @@
+10.176.12.37
+
+
+
+su detadm 
+
+
+
+start 8.00 am
+
+stop 8.00 pm
+
+10  09 * * * starthanadb.sh
+10  09 * * * startsapDET.sh
+10  09 * * * stophanadb.sh
+10  09 * * * stopsapDET.sh

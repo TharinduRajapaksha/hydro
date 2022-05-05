@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^1.15.0
   firebase_auth: ^3.3.15
   circular: ^0.0.5
+  curved_navigation_bar: ^1.0.3 #latest version
 
 dev_dependencies:
   flutter_test:

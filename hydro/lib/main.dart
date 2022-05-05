@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hydro/profile_screen.dart';
+import 'package:hydro/home.dart';
+import 'package:hydro/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         future: _initializeFirebase(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return LoginScreen();
+            return MainScreen(); //should be LoginScreen change to Home to trig the refresh home.dart
           }
           return const Center(
             child: CircularProgressIndicator(),
@@ -150,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             width: double.infinity,
             child: RawMaterialButton(
-              fillColor: const Color(0xFF0069FE),
+              fillColor: Color.fromARGB(255, 53, 183, 122),
               elevation: 0.0,
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               shape: RoundedRectangleBorder(
@@ -164,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 print(user);
                 if (user != null) {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                      MaterialPageRoute(builder: (context) => Home()));
                   //let's make a new screen
                 }
               },
