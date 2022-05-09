@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            "MyApp Title",
+            "hydro",
             style: TextStyle(
               color: Colors.black,
               fontSize: 28.0,
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           const Text(
-            "Login to Your App",
+            "Login",
             style: TextStyle(
               color: Colors.black,
               fontSize: 28.0,
@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 print(user);
                 if (user != null) {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Home()));
+                      MaterialPageRoute(builder: (context) => MainScreen()));
                   //let's make a new screen
                 }
               },

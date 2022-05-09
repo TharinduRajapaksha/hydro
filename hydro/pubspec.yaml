@@ -39,6 +39,11 @@ dependencies:
   firebase_auth: ^3.3.15
   circular: ^0.0.5
   curved_navigation_bar: ^1.0.3 #latest version
+  syncfusion_flutter_charts: ^19.2.47
+  percent_indicator: ^4.0.1
+  #flutter_rounded_progress_bar: ^0.2.0
+  lite_rolling_switch: ^0.1.1
+
 
 dev_dependencies:
   flutter_test:
