@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         future: _initializeFirebase(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return MainScreen(); //should be LoginScreen change to Home to trig the refresh home.dart
+            return LoginScreen(); //should be LoginScreen change to Home to trig the refresh home.dart
           }
           return const Center(
             child: CircularProgressIndicator(),

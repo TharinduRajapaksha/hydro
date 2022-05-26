@@ -4,6 +4,9 @@ import 'package:circular/circular.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart'
+    as sfp2; //i put sfp2 for solve the conflict between two syncfusion imports
 
 void main() {
   runApp(const MaterialApp(
@@ -55,29 +58,57 @@ class _HomeState extends State<Home> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    children: [
-                      const CircularViewer(
-                        value: 50,
-                        maxValue: 100,
-                        radius: 65,
-                        textStyle: TextStyle(fontSize: 30),
-                        color: Color.fromARGB(255, 248, 247, 247),
-                        sliderColor: Color.fromARGB(255, 53, 183, 122),
-                        unSelectedColor: Color(0xffD7DEE7),
-                      ),
-                      Text('Temperature C',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ],
+                  Container(
+                    //width: 50,
+                    //height: 350,
+                    child: Column(
+                      children: [
+                        /*
+                        sfp2.SfRadialGauge(axes: <sfp2.RadialAxis>[
+                          sfp2.RadialAxis(
+                            minimum: 0,
+                            maximum: 100,
+                            showLabels: false,
+                            showTicks: false,
+                            axisLineStyle: sfp2.AxisLineStyle(
+                              thickness: 0.2,
+                              cornerStyle: sfp2.CornerStyle.bothCurve,
+                              color: Color.fromARGB(30, 0, 169, 181),
+                              thicknessUnit: sfp2.GaugeSizeUnit.factor,
+                            ),
+                            pointers: <sfp2.GaugePointer>[
+                              sfp2.RangePointer(
+                                value: sfp2.progressValue,
+                                cornerStyle: sfp2.CornerStyle.bothCurve,
+                                width: 0.2,
+                                sizeUnit: sfp2.GaugeSizeUnit.factor,
+                              )
+                            ],
+                          )
+                        ]),*/
+
+                        const CircularViewer(
+                          value: 32,
+                          maxValue: 100,
+                          radius: 65,
+                          textStyle: TextStyle(fontSize: 30),
+                          color: Color.fromARGB(255, 248, 247, 247),
+                          sliderColor: Color.fromARGB(255, 53, 183, 122),
+                          unSelectedColor: Color(0xffD7DEE7),
+                        ),
+                        Text('Temperature C',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ],
+                    ),
                   ),
                   Column(
                     children: [
                       const CircularViewer(
-                        value: 70,
+                        value: 22,
                         maxValue: 100,
                         radius: 65,
                         textStyle: TextStyle(fontSize: 30),
@@ -103,7 +134,7 @@ class _HomeState extends State<Home> {
             Container(
               height: 200,
               width: 500,
-              margin: const EdgeInsets.only(right: 20),
+              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 3),
               child: Scaffold(
                   body: SfCartesianChart(
                       series: <LineSeries<LiveData, int>>[
@@ -136,10 +167,33 @@ class _HomeState extends State<Home> {
                       primaryYAxis: NumericAxis(
                           maximum: 100,
                           //axisLine: const AxisLine(width: 5),
-                          majorTickLines: const MajorTickLines(size: 5),
+                          majorTickLines: MajorTickLines(size: 5),
                           title: AxisTitle(text: 'Temperature & Humidity')))),
-            )
+            ),
 ///////////////////////////////////////////////////////////////////////// chart ends here/////
+            Text("Liquid Tank",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                )),
+            Container(
+                height: 120,
+                width: 500,
+                margin: const EdgeInsets.only(right: 10, left: 10, top: 5),
+                child: Scaffold(
+                    body: LiquidLinearProgressIndicator(
+                  value: 0.37,
+                  valueColor:
+                      AlwaysStoppedAnimation(Color.fromARGB(255, 1, 247, 255)),
+                  backgroundColor: Colors.white,
+                  borderColor: Color.fromARGB(255, 2, 23, 247),
+                  borderWidth: 5.0,
+                  borderRadius: 12.0,
+                  direction: Axis.vertical,
+                  // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.horizontal.
+                  center: Text("37%"),
+                ))),
           ],
         ),
       ),
